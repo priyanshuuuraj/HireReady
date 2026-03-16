@@ -27,6 +27,7 @@ An AI-powered interview preparation platform that analyzes your resume, self-des
 **Frontend**
 - React.js
 - SCSS
+- HTML
 
 ---
 
