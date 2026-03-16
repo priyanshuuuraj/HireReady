@@ -29,36 +29,6 @@ An AI-powered interview preparation platform that analyzes your resume, self-des
 
 ---
 
-## Project Structure
-
-```
-HireReady/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   │   ├── auth.controller.js
-│   │   │   └── interview.controller.js
-│   │   ├── middlewares/
-│   │   │   ├── auth.middleware.js
-│   │   │   └── file.middleware.js
-│   │   ├── models/
-│   │   │   ├── blacklist.model.js
-│   │   │   ├── interviewReport.model.js
-│   │   │   └── user.model.js
-│   │   ├── routes/
-│   │   │   ├── auth.routes.js
-│   │   │   └── interview.routes.js
-│   │   ├── services/
-│   │   │   └── ai.service.js
-│   │   └── app.js
-│   ├── server.js
-│   └── package.json
-└── frontend/
-```
-
----
-
 ## Getting Started
 
 ### Prerequisites
