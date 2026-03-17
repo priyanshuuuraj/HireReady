@@ -9,23 +9,28 @@ const useAuth = () => {
 
     const handleLogin = async (email, password) => {
         setLoading(true)
-        const data = await login({ email, password })
-        if (data && data.user) {  // ✅ check if data exists
-            setUser(data.user)
+        try {
+            const data = await login({ email, password })
+            if (data?.user) {
+                setUser(data.user)
+            }
+        } catch(err) {
+            console.error("Login error:", err)
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
     }
 
     const handleRegister = async (username, email, password) => {
         setLoading(true)
         try {
             const data = await register({ username, email, password })
-            setUser(data.user)
-        }
-        catch (err) {
-            console.log(err)
-        }
-        finally {
+            if (data?.user) {
+                setUser(data.user)
+            }
+        } catch(err) {
+            console.error("Register error:", err)
+        } finally {
             setLoading(false)
         }
     }
@@ -33,27 +38,28 @@ const useAuth = () => {
     const handleLogout = async () => {
         setLoading(true)
         try {
-            const data = await logout()
+            await logout()
             setUser(null)
-        }
-        catch (err) {
-            console.log(err)
-        }
-        finally {
+        } catch(err) {
+            console.error("Logout error:", err)
+        } finally {
             setLoading(false)
         }
     }
 
-
     useEffect(() => {
         const getAndSetUser = async () => {
-            const data = await getMe()
-            setUser(data.user)
-            setLoading(false)
+            try {
+                const data = await getMe()
+                setUser(data?.user ?? null) // ✅ safe even if data is null
+            } catch(err) {
+                setUser(null)
+            } finally {
+                setLoading(false)
+            }
         }
         getAndSetUser()
     }, [])
-
 
     return {
         user,

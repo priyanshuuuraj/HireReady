@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const technicalQuestionSchema = new mongoose.Schema({
     question: {
         type: String,
@@ -63,7 +64,6 @@ const preparationPlanSchema = new mongoose.Schema({
     } ]
 })
 
-
 const interviewReportSchema = new mongoose.Schema({
     jobDescription: {
         type: String,
@@ -99,4 +99,4 @@ const interviewReportSchema = new mongoose.Schema({
 
 const interviewReportModel = mongoose.model("InterviewReport", interviewReportSchema);
 
-module.exports = interviewReportModel;
+module.exports = interviewReportModel;  
